@@ -1,0 +1,3 @@
+project=yt_paycenter_dev
+table=luoxin_test_mr_out
+columns=ytid:BIGINT,nickname:STRING
