@@ -1,4 +1,5 @@
 import com.aliyun.odps.OdpsException;
+import com.aliyun.odps.counter.Counter;
 import com.aliyun.odps.data.Record;
 import com.aliyun.odps.data.TableInfo;
 import com.aliyun.odps.mapred.JobClient;
@@ -14,10 +15,12 @@ import java.io.IOException;
 public class HandleColumn {
     public static class TokenizerMapper extends MapperBase {
         Record one;
+        Counter gCnt;
 
         @Override
         public void setup(TaskContext context) throws IOException {
             one = context.createMapOutputValueRecord();
+            gCnt = context.getCounter("MyCounters", "global_counts");
         }
 
         @Override
@@ -26,6 +29,8 @@ public class HandleColumn {
             one.setString("nickname",record.getString("nickname"));
             one.setString("handle_column", record.getBigint("ytid")+record.getString("nickname"));
             context.write(one);
+            gCnt.increment(1);
+            System.out.println(gCnt.getValue());
         }
     }
 
