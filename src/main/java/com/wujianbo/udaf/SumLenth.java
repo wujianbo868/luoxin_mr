@@ -4,7 +4,6 @@ import com.aliyun.odps.io.LongWritable;
 import com.aliyun.odps.io.Text;
 import com.aliyun.odps.io.Writable;
 import com.aliyun.odps.udf.Aggregator;
-import com.aliyun.odps.udf.UDFException;
 import com.aliyun.odps.udf.annotation.Resolve;
 
 @Resolve("string->bigint")
@@ -24,7 +23,6 @@ public class SumLenth extends Aggregator {
         LongWritable result = (LongWritable) arg0;
         LongWritable partial = (LongWritable) arg1;
         result.set(result.get() + partial.get());
-
     }
 
     @Override
