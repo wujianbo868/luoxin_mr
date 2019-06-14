@@ -1,3 +1,0 @@
-project=yt_paycenter_dev
-table=luoxin_test_mr_1
-columns=ytid:BIGINT,nickname:STRING
