@@ -1,3 +1,5 @@
+package com.wujianbo.mapreduce;
+
 import com.aliyun.odps.data.Record;
 import com.aliyun.odps.data.TableInfo;
 import com.aliyun.odps.mapred.JobClient;
